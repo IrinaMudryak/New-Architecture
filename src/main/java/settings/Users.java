@@ -5,7 +5,6 @@ import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.PageFactory;
 import utility.Page;
 import utility.PageManager;
 
@@ -38,20 +37,22 @@ public class Users extends Page {
     private WebElement websiteMenuItem;
 
     /*open User Editor of root user*/
-    public UserEditor openUserEditor() {
+    public UserEditor openRootUserEditor() {
         Actions action = new Actions(driver);
         Action moveToElem = action.doubleClick(rootUser).build();
         moveToElem.perform();
         waitForJSandJQueryToLoad();
-        return pages.editor;
+        return pages.userEditor;
+
     }
 
 
     /*click Add user button*/
     public UserEditor clickAddUser(){
+        waitUntilElementUsable(addUserBtn);
         addUserBtn.click();
         waitForJSandJQueryToLoad();
-        return pages.editor;
+        return pages.userEditor;
     }
 
 
@@ -67,6 +68,6 @@ public class Users extends Page {
         Action moveToElem = action.doubleClick(lastUser).build();
         moveToElem.perform();
         waitForJSandJQueryToLoad();
-        return pages.editor;
+        return pages.userEditor;
     }
 }

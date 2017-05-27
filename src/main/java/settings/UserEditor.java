@@ -3,7 +3,6 @@ package settings;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import utility.Page;
 import utility.PageManager;
@@ -71,93 +70,106 @@ public class UserEditor extends Page{
     private WebElement activeCheckbox;
 
     /*turn on MAP2 checkbox in Access tab(if it is off)*/
-    public Users turnOnMap2() throws InterruptedException {
-        Thread.sleep(1000);
-        accessTab.click();
-        toolsItem.click();
-        if (map2Checkbox.getAttribute("checked") == null) {
-            map2Checkbox.click();
-        }
+    public void turnOnMap2() throws InterruptedException {
+        waitUntilElementUsable(accessTab);
+         accessTab.click();
+         waitForJSandJQueryToLoad();
+         turnOnMap2Checkbox();
         saveBtn.click();
         waitForJSandJQueryToLoad();
-        return pages.users;
+
     }
 
     /*turn on MAP2 checkbox in Access tab(if it is off)*/
-    public UserEditor turnOnMap2Checkbox() throws InterruptedException {
-        Thread.sleep(500);
+    public void turnOnMap2Checkbox() throws InterruptedException {
+        waitUntilElementUsable(toolsItem);
         toolsItem.click();
-        Thread.sleep(500);
+         waitForJSandJQueryToLoad();
         if (map2Checkbox.getAttribute("checked") == null) {
+            waitUntilElementUsable(map2Checkbox);
             map2Checkbox.click();
+            waitForJSandJQueryToLoad();
         }
-        Thread.sleep(500);
+        waitUntilElementUsable(toolsItem);
         toolsItem.click();
-        return pages.editor;
+        waitForJSandJQueryToLoad();
+
     }
 
     /*turn on MAP2 checkbox in Access tab(if it is off)*/
     public UserEditor turnOnMapCustomCheckbox() throws InterruptedException {
-        Thread.sleep(500);
         toolsItem.click();
-        Thread.sleep(500);
+       waitForJSandJQueryToLoad();
         if (mapCustomCheckbox.getAttribute("checked") == null) {
             mapCustomCheckbox.click();
+            waitForJSandJQueryToLoad();
         }
-        Thread.sleep(500);
-        toolsItem.click();
-        return pages.editor;
+         toolsItem.click();
+        waitForJSandJQueryToLoad();
+        return this;
     }
 
     /*turn on Leads Email checkbox in Access tab(if it is off)*/
     public UserEditor turnOnLeadsEmail() throws InterruptedException {
-        Thread.sleep(500);
+        waitUntilElementUsable(settingsWebsiteItem);
         settingsWebsiteItem.click();
-        Thread.sleep(500);
+      waitForJSandJQueryToLoad();
         if (leadsEmailCheckbox.getAttribute("checked") == null) {
+            waitUntilElementUsable(leadsEmailCheckbox);
             leadsEmailCheckbox.click();
+            waitForJSandJQueryToLoad();
         }
-        Thread.sleep(500);
+        waitUntilElementUsable(settingsWebsiteItem);
         settingsWebsiteItem.click();
-        return pages.editor;
+        waitForJSandJQueryToLoad();
+        return this;
     }
     /*turn on Leads CRM checkbox in Access tab(if it is off)*/
     public UserEditor turnOnLeadsCRM() throws InterruptedException {
-        Thread.sleep(500);
-        customersItem.click();
-        Thread.sleep(500);
-        if (leadsCustomersCheckbox.getAttribute("checked") == null) {
+         waitUntilElementUsable(customersItem);
+          customersItem.click();
+          waitForJSandJQueryToLoad();
+       if (leadsCustomersCheckbox.getAttribute("checked") == null)  {
+            waitUntilElementUsable(leadsCustomersCheckbox);
             leadsCustomersCheckbox.click();
+            waitForJSandJQueryToLoad();
         }
-        Thread.sleep(500);
+        waitUntilElementUsable(customersItem);
         customersItem.click();
-        return pages.editor;
+        waitForJSandJQueryToLoad();
+        return this;
     }
 
     /*turn on Website Settings checkbox in Access tab(if it is off)*/
     public UserEditor turnOnWebsiteSettings() throws InterruptedException {
-        Thread.sleep(500);
-        settingsWebsiteItem.click();
-        Thread.sleep(500);
+        waitUntilElementUsable(settingsWebsiteItem);
+         settingsWebsiteItem.click();
+      waitForJSandJQueryToLoad();
         if (websiteSettingsCheckbox.getAttribute("checked") == null) {
+            waitUntilElementUsable(websiteSettingsCheckbox);
             websiteSettingsCheckbox.click();
+            waitForJSandJQueryToLoad();
         }
-        Thread.sleep(500);
-        settingsWebsiteItem.click();
-        return pages.editor;
+         waitUntilElementUsable(settingsWebsiteItem);
+         settingsWebsiteItem.click();
+        waitForJSandJQueryToLoad();
+        return this;
     }
 
     /*turn on Webmail checkbox in Access tab(if it is off)*/
     public UserEditor turnOnWebmail() throws InterruptedException {
-        Thread.sleep(500);
-        toolsItem.click();
-        Thread.sleep(500);
+          waitUntilElementUsable(toolsItem);
+          toolsItem.click();
+       waitForJSandJQueryToLoad();
         if (webMailCheckbox.getAttribute("checked") == null) {
+            waitUntilElementUsable(webMailCheckbox);
             webMailCheckbox.click();
+            waitForJSandJQueryToLoad();
         }
-        Thread.sleep(500);
+        waitUntilElementUsable(toolsItem);
         toolsItem.click();
-        return pages.editor;
+        waitForJSandJQueryToLoad();
+        return this;
     }
 
     /*create new user with manager role*/
@@ -181,6 +193,7 @@ public class UserEditor extends Page{
 
     /*click on Save*/
     public Users clickSaveBtn(){
+        waitUntilElementUsable(saveBtn);
         saveBtn.click();
         waitForJSandJQueryToLoad();
         return pages.users;
@@ -188,7 +201,10 @@ public class UserEditor extends Page{
 
     /*go to Access tab*/
     public UserEditor clickAccessTab(){
-        accessTab.click(); return pages.editor;
+        waitUntilElementUsable(accessTab);
+        accessTab.click();
+        waitForJSandJQueryToLoad();
+        return this;
     }
 }
 

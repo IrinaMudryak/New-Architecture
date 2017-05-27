@@ -50,7 +50,7 @@ public class Dealers extends Page {
     @FindBy(how = How.ID, using = "idBackCont")
     private WebElement screenLoading;
 
-    /*Open Site Package editor for tacker.ixloo.com*/
+    /*Open Site Package userEditor for tacker.ixloo.com*/
     public SitePackage turnOnAccess() throws InterruptedException {
         Actions action = new Actions(driver);
         Action dblclick = action.doubleClick(domainInTree).build();

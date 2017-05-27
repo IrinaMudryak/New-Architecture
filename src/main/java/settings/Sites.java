@@ -44,31 +44,19 @@ public class Sites extends Page {
         Actions action = new Actions(driver);
         Action dblclick = action.doubleClick(rootSite).build();
         dblclick.perform();
-        return PageFactory.initElements(driver, SiteEditor.class);
+        waitForJSandJQueryToLoad();
+        return pages.siteEditor;
     }
 
-    /*go to MAP2 module*/
-    public MAP2 goToMAP2() {
-     /*   Actions action = new Actions(driver);
-        Action moveToElem = action.moveToElement(toolsMenuItem).build();
-        moveToElem.perform();
-        map2MenuItem.click();*/
-        driver.get("http://www.svtautotest.ixloo.com/dms/tools/make_a_page_2");
-        return PageFactory.initElements(driver, MAP2.class);
-    }
-
-    /*go to dms Website General page*/
+       /*go to dms Website General page*/
     public Website clickOnWebsiteMenu() {
         Actions action = new Actions(driver);
         Action moveToElem = action.moveToElement(settingsMenuItem).build();
         moveToElem.perform();
         websiteMenuItem.click();
-        return PageFactory.initElements(driver, Website.class);
+        waitForJSandJQueryToLoad();
+        return pages.website;
     }
 
-    /*go to dms Users page*/
-    public Users clickOnUsersMenu() {
-        driver.get("http://www.svtautotest.ixloo.com/dms/settings/users");
-        return PageFactory.initElements(driver, Users.class);
-    }
+
 }

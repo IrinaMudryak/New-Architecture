@@ -34,7 +34,7 @@ public class EmailsList extends Page {
         Action moveToElem = action.doubleClick(firstEmail).build();
         moveToElem.perform();
         driver.switchTo().defaultContent();
-        return PageFactory.initElements(driver, EmailDetails.class);
+        return pages.emailDetails;
     }
 
     public void clickDateColumn(){

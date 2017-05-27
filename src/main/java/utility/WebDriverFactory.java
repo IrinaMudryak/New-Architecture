@@ -21,7 +21,7 @@ public class WebDriverFactory {
     }
 
 
-    public static WebDriver getInstance (String browser){
+    public static WebDriver openBrowser(String browser){
         if (driver == null) {
             if (CHROME.equals(browser)) {
                 setChromeDriver();
@@ -50,7 +50,7 @@ public class WebDriverFactory {
     }
 
 
-    public static void killDriverInstance() {
+    public static void stopBrowser() {
         if (driver != null) {
             driver.manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
             driver.quit();
