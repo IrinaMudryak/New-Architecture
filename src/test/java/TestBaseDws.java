@@ -1,3 +1,4 @@
+import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.testng.annotations.*;
 import utility.*;
@@ -10,42 +11,46 @@ import utility.*;
 public class TestBaseDws {
 
     private static final Logger LOG = LogFactory.getLogger(TestBaseDws.class);
-    public ApplicationManager app;
-    public PageManager pages;
+    public static ApplicationManager app;
+    public static PageManager pages;
+    public  static String dealershipName;
 
   @BeforeSuite
     @Parameters({"browserName"})
-    public void turnOnMap2(String browserName) throws InterruptedException {
+    public void preparatios(String browserName) throws InterruptedException {
 
         LOG.info("Navigating to test url");
 
         app = new ApplicationManager(browserName);
         pages = new PageManager(app.getWebDriver());
-        app.getNavigationHelper().openLoginPage();
-        app.map2Helper.loginToDms();
-        app.getUserHelper().createManagerAndSetAccesses();
-        app.getNavigationHelper().openSettingsWebsiteGeneral()
-                .disableCaptcha()
-                .setjQueryVersion();
-        app.getBrowserHelper().stopBrowser();
-
-        }
 
 
-    @BeforeClass
-    @Parameters({ "browserName" })
-    public void setup(String browserName) throws Exception {
+        app.dmsHelper.loginToDms();
+        app.userHelper.turnOnMap2OnRootUser();
+        app.userHelper.createManagerAndSetAccesses();
+        app.navHelper.openSettingsWebsiteGeneral();
+        pages.website.disableCaptcha();
+        pages.website.setjQueryVersion();
+        app.navHelper.openDealershipGeneralInformation();
+        dealershipName = pages.dealershipGeneralInformation.getDealershipName();
+        //app.map2Helper.createNotifyMePage();
 
-        app = new ApplicationManager(browserName);
-        pages = new PageManager(app.getWebDriver());
-
-         }
+      }
 
 
-    @AfterClass
-    public void stop() {
-        app.getBrowserHelper().stopBrowser();
-    }
+     @BeforeClass
+     public void openTestUrl(){
+      app.navHelper.openNotifyMePage();
+     }
+
+
+
+
+
+   @AfterSuite
+        public void stop() {
+      app.getWebDriverFactory().stopBrowser();
+  }
 
 }
 

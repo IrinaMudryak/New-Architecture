@@ -1,9 +1,9 @@
 package map2;
 
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.PageFactory;
 import utility.Page;
 import utility.PageManager;
 
@@ -26,20 +26,21 @@ public class MAP2 extends Page{
     public WebElement deleteLastPageBtn;
 
     public void clickNotifyTab(){
-
+        Actions action = new Actions(driver);
+        action.moveToElement(notifyTab).perform();
         notifyTab.click();
+        waitForJSandJQueryToLoad();
     }
-    public NotifyMeWidgetSettings clickAddPage(
 
-    ){
+    public void clickAddPage(){
         addPageBtn.click();
-        return pages.notifyMeWidgetSettings;
-    }
+        waitForJSandJQueryToLoad();}
 
-    public void deletePage(){
+    public void deleteLastPage(){
         deleteLastPageBtn.click();
         driver.switchTo().alert().accept();
     }
+
 
     public boolean isNotifyTabExists(){
         return notifyTab.isDisplayed();

@@ -6,15 +6,17 @@ import dms.LoginPage;
 import dms.SiteEditor;
 import dmsDealers.Dealers;
 import dmsDealers.SitePackage;
-import dmsInventory.Inventory;
-import dmsInventory.UploadWizard;
-import map2.NewPageAttributes;
 import map2.MAP2;
-import map2.NotifyMeWidgetSettings;
+import map2.NotifyMePageInMAP2;
+import map2.WidgetSettings;
 import notifiMeForm.NotifyMeFormPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import settings.*;
+import webmail.EmailDetails;
+import webmail.EmailsList;
+import webmail.WebMailLogin;
 
 
 /**
@@ -26,20 +28,22 @@ public class PageManager {
     public LoginPage loginPage;
     public DmsHome dmsHome;
     public MAP2 map2;
-    public NotifyMeWidgetSettings notifyMeWidgetSettings;
-    public NewPageAttributes newPageAttr;
+    public NotifyMePageInMAP2 notifyMePageInMAP2;
     public SiteEditor siteEditor;
     public Dealers dealers;
     public SitePackage sitePackage;
-    public Inventory inventory;
-    public UploadWizard wizard;
     public LeadsEmail leadsEmail;
     public Localization localization;
     public Sites sites;
-    public UserEditor editor;
+    public UserEditor userEditor;
     public Users users;
     public Website website;
     public Leads leads;
+    public EmailsList emailsList;
+    public EmailDetails emailDetails;
+    public WebMailLogin webMailLogin;
+    public DealershipGeneralInformation dealershipGeneralInformation;
+    public WidgetSettings widgetSettings;
 
 
 
@@ -49,26 +53,28 @@ public class PageManager {
         loginPage = initElements(new LoginPage(this));
         dmsHome = initElements(new DmsHome(this));
         map2 = initElements(new MAP2(this));
-        notifyMeWidgetSettings = initElements(new NotifyMeWidgetSettings(this));
-        newPageAttr = initElements(new NewPageAttributes(this));
+        notifyMePageInMAP2 = initElements(new NotifyMePageInMAP2(this));
         siteEditor = initElements(new SiteEditor(this));
         dealers = initElements(new Dealers(this));
         sitePackage = initElements(new SitePackage(this));
-        inventory = initElements(new Inventory(this));
-        wizard = initElements(new UploadWizard(this));
         leadsEmail = initElements(new LeadsEmail(this));
         localization = initElements(new Localization(this));
         sites = initElements(new Sites(this));
-        editor = initElements(new UserEditor(this));
+        userEditor = initElements(new UserEditor(this));
         users = initElements(new Users(this));
         website = initElements(new Website(this));
         leads = initElements(new Leads(this));
+        emailDetails = initElements(new EmailDetails(this));
+        emailsList = initElements(new EmailsList(this));
+        webMailLogin = initElements(new WebMailLogin(this));
+        dealershipGeneralInformation = initElements(new DealershipGeneralInformation(this));
+        widgetSettings = initElements(new WidgetSettings(this));
+
 
     }
 
     private <T extends Page> T initElements (T page){
-      // PageFactory.initElements(new AjaxElementLocatorFactory(driver,10), page);
-       PageFactory.initElements(new DisplayedElementLocatorFactory(driver,10), page);
+       PageFactory.initElements(new AjaxElementLocatorFactory(driver,90), page);
         return page;
       }
 

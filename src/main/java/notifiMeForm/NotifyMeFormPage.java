@@ -23,6 +23,9 @@ public class NotifyMeFormPage extends Page {
         super(pages);
     }
 
+    @FindBy(how = How.XPATH, using = "(//div[@class='panel-body']//div[@class='col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center'])[1]")
+    private WebElement postForm;
+
     //Widget Title
     @FindBy(how= How.XPATH, using ="//div[@class='panel-heading']") // title ein widget heading
     private WebElement widgetTitle;
@@ -280,13 +283,6 @@ public class NotifyMeFormPage extends Page {
 
 
 
-
-
-
-
-
-
-
     public boolean isSecurityTitleDisplayed(){
         return securityTitle.isDisplayed();
     }
@@ -305,6 +301,7 @@ public class NotifyMeFormPage extends Page {
 
     public void clickOnSubmit(){
         submitButton.click();
+        waitForJSandJQueryToLoad();
     }
 
     /*  public void getInputBorderColor(){
@@ -383,28 +380,30 @@ public class NotifyMeFormPage extends Page {
 
     //Select elements in Dropdown Motorized Type
     public void setMotorisedType (String motorizedType) { //method to select motorized type,
+        waitUntilElementEnabled(motorizedTypeSelector);
         motorizeTypeDropdown().selectByValue(motorizedType); //as attribute need the motorized type value number as a string
     }
     //Select elements in Dropdown Type
     public void setType (String type) { //method to select  type,
+        waitUntilElementEnabled(typeSelector);
         typeDropdown().selectByValue(type); //as attribute need the type value number as a string
     }
 
     //Select elements in Dropdown BodyStyle
     public void setBodyStyle (String bodyStyle) { //method to select Body Style,
-        /*WebElement dynamicElement = (new WebDriverWait(driver, 10))
-                .until(ExpectedConditions.elementToBeClickable(By.name("body_style"))); */
-
+        waitUntilElementEnabled(bodyStyleSelector);
         bodyStyleDropdown().selectByValue(bodyStyle); //as attribute need the Body Style value number as a string
     }
 
     //Select elements in Dropdown Make
     public void setMake (String make) { //method to select Make,
+        waitUntilElementEnabled(makeSelector);
         makeDropdown().selectByValue(make); //as attribute need the Make value number as a string
     }
 
     //Select elements in Dropdown Model
     public void setModel (String make) { //method to select Model,
+        waitUntilElementEnabled(makeSelector);
         modelDropdown().selectByValue(make); //as attribute need the Model value number as a string
     }
 
@@ -434,28 +433,52 @@ public class NotifyMeFormPage extends Page {
     }
 
     public NotifyMeFormPage fillFirstName(String firstName){
+        firstNameInput.clear();
         firstNameInput.sendKeys(firstName);
+        return this;
+    }
+    public NotifyMeFormPage clearFirstName(){
+        firstNameInput.clear();
         return this;
     }
 
 
     public NotifyMeFormPage fillLastName(String lastName) {
+        lastNameInput.clear();
         lastNameInput.sendKeys(lastName);
         return this;
     }
 
+    public NotifyMeFormPage clearLastName() {
+        lastNameInput.clear();
+        return this;
+    }
+
     public NotifyMeFormPage fillEmail(String emailAddress) {
+        emailInput.clear();
         emailInput.sendKeys(emailAddress);
+        return this;
+    }
+
+    public NotifyMeFormPage clearEmail(){
+        emailInput.clear();
         return this;
     }
 
 
     public NotifyMeFormPage fillPhoneField(String phoneNumber) {
         phoneNumInput.click();
+        phoneNumInput.clear();
         phoneNumInput.sendKeys(Keys.HOME);
         phoneNumInput.sendKeys(phoneNumber);
         return this;
 
+    }
+
+    public NotifyMeFormPage clearPhoneField() {
+        phoneNumInput.click();
+        phoneNumInput.clear();
+        return this;
     }
 
     public NotifyMeFormPage fillMinPrice(String minPrice) {
@@ -478,6 +501,11 @@ public class NotifyMeFormPage extends Page {
         return this;
     }
 
+    public String postFormGetText() {
+        return postForm.getText();
+    }
+
+
 
 
     @FindAll(@FindBy( how = How.XPATH, using = "//tr[@id='leads_email_notify']//div[@class='dotted_note3'][contains(text(), 'test_4@dxloo.com')]"))
@@ -493,6 +521,8 @@ public class NotifyMeFormPage extends Page {
         }
         return returnList;
     }
+
+
 
 
 

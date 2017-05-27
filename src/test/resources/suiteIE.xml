@@ -4,11 +4,11 @@
     <parameter name="browserName" value="ie"/>
     <test name="Test">
         <classes>
-         <!--  <class name="elements.IsElemensDisplayedTrucks"/> -->
-          <class name="IsElementDisplayedVehicle"/>
+         <!--  <class name="elements.IsElementsDisplayedTrucks"/> -->
+          <class name="IsElementsDisplayedVehicle"/>
         <class name="RequiredFieldsHighlighted"/>
-        <!--  <class name="positiveTests.PositiveTestTruckMode"/>-->
-      <!-- <class name="positiveTests.PositiveTestVehicleMode"/>-->
+        <!--  <class name="positiveTests.DefaultPostFormTestTruckMode"/>-->
+      <!-- <class name="positiveTests.DefaultPostFormTestVehicleMode"/>-->
 
 
         </classes>

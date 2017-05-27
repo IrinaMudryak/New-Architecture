@@ -1,15 +1,13 @@
 package utility;
 
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * Created by Home on 24.04.2017.
  */
-public class Page {
+public abstract class Page {
     //объявление класса
     //   private static final Logger LOG = LogFactory.getLogger(Page.class);
 
@@ -65,9 +63,8 @@ public class Page {
             @Override
             public Boolean apply(WebDriver driver) {
                 try {
-                    return ((Long)((JavascriptExecutor)driver).executeScript("return jQuery.active") == 0);
-                }
-                catch (Exception e) {
+                    return ((Long) ((JavascriptExecutor) driver).executeScript("return jQuery.active") == 0);
+                } catch (Exception e) {
                     // no jQuery present
                     return true;
                 }
@@ -78,7 +75,7 @@ public class Page {
         ExpectedCondition<Boolean> jsLoad = new ExpectedCondition<Boolean>() {
             @Override
             public Boolean apply(WebDriver driver) {
-                return ((JavascriptExecutor)driver).executeScript("return document.readyState")
+                return ((JavascriptExecutor) driver).executeScript("return document.readyState")
                         .toString().equals("complete");
             }
         };
@@ -86,4 +83,40 @@ public class Page {
         return wait.until(jQueryLoad) && wait.until(jsLoad);
     }
 
-}
+
+    public boolean waitUntilElementUsable(final WebElement element) {
+     return  wait.until(new ExpectedCondition<Boolean>() {
+            public Boolean apply(WebDriver d) {
+                try {
+                    return element.isDisplayed();
+                } catch (NoSuchElementException ex) {
+                    return false;
+                }
+            }
+        });
+    }
+
+    public boolean waitUntilElementEnabled(final WebElement element) {
+        return  wait.until(new ExpectedCondition<Boolean>() {
+            public Boolean apply(WebDriver d) {
+                try {
+                    return element.isEnabled();
+                } catch (NoSuchElementException ex) {
+                    return false;
+                }
+            }
+        });
+    }
+
+
+  }
+
+
+
+
+
+
+
+
+
+

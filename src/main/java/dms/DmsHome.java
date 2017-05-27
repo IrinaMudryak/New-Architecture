@@ -2,22 +2,18 @@ package dms;
 
 import customers.Leads;
 import dmsDealers.Dealers;
-import dmsInventory.Inventory;
-import dmsInventory.UploadWizard;
 import map2.MAP2;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.PageFactory;
 import settings.Sites;
-import settings.Users;
 import settings.Website;
 import utility.Page;
 import utility.PageManager;
 import webmail.EmailsList;
-import webmail.WebmailLogin;
+import webmail.WebMailLogin;
 
 
 /**
@@ -98,10 +94,6 @@ public class DmsHome extends Page {
         return pages.website;
     }
 
-    public Website clickOnWebsiteMenu2() {
-        driver.get("http://http://www.svtautotest.ixloo.com/dms/settings/website#general");
-        return pages.website;
-    }
 
     /*go to dms Sites page*/
     public Sites clickOnSitesMenu() {
@@ -112,15 +104,6 @@ public class DmsHome extends Page {
         return pages.sites;
     }
 
-    /*go to dms Users page*/
-    public Users clickOnUsersMenu() {
-    /*    Actions action = new Actions(driver);
-        Action moveToElem = action.moveToElement(settingsMenuItem).build();
-        moveToElem.perform();
-        usersMenuItem.click();*/
-        driver.get("http://www.svtautotest.ixloo.com/dms/settings/users");
-        return pages.users;
-    }
 
     /*go to dms Customers Leads page*/
     public Leads clickOnLeadsMenu() {
@@ -132,29 +115,17 @@ public class DmsHome extends Page {
     }
 
     /*go to Webmail login page*/
-    public WebmailLogin clickOnWebmailMenu() {
+    public WebMailLogin clickOnWebmailMenu() {
         webmailMenuItem.click();
-        return PageFactory.initElements(driver, WebmailLogin.class);
+        return pages.webMailLogin;
     }
 
     /*go to Webmail page*/
     public EmailsList clickOnWebmailMenu2() {
         webmailMenuItem.click();
-        return PageFactory.initElements(driver, EmailsList.class);
+        return pages.emailsList;
     }
 
-    /*go to Inventory page*/
-    public Inventory clickOnInventoryMenu() {
-        inventoryMenuItem.click();
-        return PageFactory.initElements(driver, Inventory.class);
-    }
 
-    /*go to dms Customers Leads page*/
-    public UploadWizard clickOnUploadWizardMenu() {
-        Actions action = new Actions(driver);
-        Action moveToElem = action.moveToElement(inventoryMenuItem).build();
-        moveToElem.perform();
-        uploadWizardMenuItem.click();
-        return PageFactory.initElements(driver, UploadWizard.class);
-    }
+
 }

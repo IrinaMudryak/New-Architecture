@@ -8,27 +8,28 @@ import org.openqa.selenium.WebDriver;
 public class ApplicationManager {
     public NavigationHelper navHelper;
     public String baseUrl;
-    public BrowserHelper browserHelper;
     public WebDriver driver;
-    public MAP2Helper map2Helper;
+    public DmsHelper dmsHelper;
     public UserHelper userHelper;
+    public WebDriverFactory webDriverFactory;
+    public FormHelper formHelper;
 
     public ApplicationManager (String browserName) {
 
         baseUrl = PropertyLoader.loadProperty("site.url");
-        browserHelper = new BrowserHelper();
-        driver = getBrowserHelper().runDriver(browserName);
+        webDriverFactory = new WebDriverFactory();
+        driver = getWebDriverFactory().openBrowser(browserName);
         navHelper = new NavigationHelper(this);
-        map2Helper = new MAP2Helper(this);
+        dmsHelper = new DmsHelper(this);
         userHelper = new UserHelper(this);
+        formHelper = new FormHelper(this);
+
     }
+
+    public WebDriverFactory getWebDriverFactory () {return webDriverFactory;}
 
     public NavigationHelper getNavigationHelper() {
         return navHelper;
-    }
-
-    public BrowserHelper getBrowserHelper() {
-        return  browserHelper;
     }
 
     public WebDriver getWebDriver() {
@@ -37,5 +38,6 @@ public class ApplicationManager {
 
     public UserHelper getUserHelper() { return userHelper;}
 
-    public MAP2Helper getMap2Helper() {return map2Helper;}
+    public DmsHelper getDmsHelper() {return dmsHelper;}
+
 }

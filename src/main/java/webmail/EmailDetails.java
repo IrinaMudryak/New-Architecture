@@ -106,7 +106,7 @@ public class EmailDetails extends Page{
     public EmailsList removeEmail2(){
         driver.switchTo().frame(iframe);
         deleteBtn.click();
-        return PageFactory.initElements(driver,EmailsList.class);
+        return pages.emailsList;
     }
 
     public String getFirstName(){
