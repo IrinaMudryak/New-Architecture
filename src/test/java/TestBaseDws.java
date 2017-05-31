@@ -25,12 +25,12 @@ public class TestBaseDws {
 
 
         app.loginFunc.loginToDms();
-        app.userHelper.turnOnMap2OnRootUser();
-        //app.userHelper.createManagerAndSetAccesses();
-        app.navHelper.openSettingsWebsiteGeneral();
+        app.userFunc.turnOnMap2OnRootUser();
+        //app.userFunc.createManagerAndSetAccesses();
+        app.websiteFunc.openSettingsWebsiteGeneral();
         pages.website.disableCaptcha();
         pages.website.setjQueryVersionMAP2();
-        app.navHelper.openDealershipGeneralInformation();
+        app.dealershipGeneralFunc.openDealershipGeneralInformation();
         dealershipName = pages.dealershipGeneralInformation.getDealershipName();//save Dealership Name
         //app.map2Helper.createNotifyMePage();
 
@@ -39,7 +39,7 @@ public class TestBaseDws {
 
      @BeforeClass
      public void openTestUrl(){
-      app.navHelper.openNotifyMePage();
+      app.notifyMeFormFunc.openNotifyMePage();
      }
 
 

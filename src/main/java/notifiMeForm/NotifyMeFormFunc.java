@@ -21,6 +21,13 @@ public class NotifyMeFormFunc extends BaseHelper {
         super(app);
     }
 
+       //open DWS Notify Me page
+    public NotifyMeFormPage openNotifyMePage() {
+        app.getWebDriver().get(app.baseUrl + "/notify");
+        return pages.notifyMe;
+
+    }
+
     public void fillFormVehicleMode (){
         pages.notifyMe.setMinYear("2000"); //select min Year=2000
         pages.notifyMe.setMaxYear("2017"); //select max Year=2017
@@ -54,45 +61,7 @@ public class NotifyMeFormFunc extends BaseHelper {
                 .clearPhoneField();
     }
 
-    public void setExpectedColors(String browserName) {
 
-        if(CHROME.equals(browserName)) {
-            borderColor = "rgb(169, 68, 66)";
-            labelColor = "rgba(169, 68, 66, 1)";
-            borderColorFirstName = "rgb(169, 68, 66)";
-            asteriskColor = "rgba(169, 68, 66, 1)";
-        }
-
-        else if(FIREFOX.equals(browserName)) {
-            borderColor = "#a94442";
-            labelColor = "#a94442";
-            borderColorFirstName = "#a94442";
-            asteriskColor = "#a94442";
-        }
-        else if (WebDriverFactory.IE.equals(browserName)){
-            borderColor = "#a94442";
-            labelColor = "rgba(169, 68, 66, 1)";
-            borderColorFirstName = "#843534";
-            asteriskColor = "rgba(169, 68, 66, 1)";
-        }
-
-    }
-
-    public String getBorderColor (){
-        return borderColor;
-    }
-
-    public String getLabelColor() {
-        return labelColor;
-    }
-
-    public String getBorderColorFirstName() {
-        return borderColorFirstName;
-    }
-
-    public String getAsteriskColor() {
-        return asteriskColor;
-    }
 }
 
 

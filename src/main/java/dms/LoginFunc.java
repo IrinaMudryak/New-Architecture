@@ -15,8 +15,14 @@ public class LoginFunc extends BaseHelper {
         super(app);
     }
 
+    // open DMS- Login page
+    public LoginPage openLoginPage() {
+        app.getWebDriver().get(app.baseUrl + "/dms/login");
+        return pages.loginPage;
+    }
+
     public void loginToDms(){
-        app.navHelper.openLoginPage();
+        openLoginPage();
         fillInputField(pages.loginPage.getLoginInput(), login);
         fillInputField(pages.loginPage.getPwInput(), PropertyLoader.loadProperty("super.pw"));
         pages.loginPage.getSubmitButton().click();

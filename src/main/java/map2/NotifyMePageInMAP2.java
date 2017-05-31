@@ -25,6 +25,7 @@ public class NotifyMePageInMAP2 extends Page {
     @FindBy(how= How.XPATH, using ="//div[@data-tab='library']") //icon of the widgets library
     private WebElement libraryTab;
 
+
     @FindBy(how= How.XPATH, using ="//div[@class='ico-widget widget-notify_me']")//Notify widget in the widgets library
     private WebElement notifyIconTree;
 
@@ -40,14 +41,20 @@ public class NotifyMePageInMAP2 extends Page {
     @FindBy(how = How.CSS, using = "#library-keyword-filter")
     private WebElement filter;
 
+
+
     @FindBy (how = How.CSS, using = ".ax-container.empty.col-lg-12.col-md-12.col-sm-12.col-xs-12.ui-droppable.ui-sortable")
      private WebElement target;
 
     @FindBy (how = How.CSS, using = ".ax-btn.btn-edit")
      private WebElement widgetEditorIcon;
 
+    //Getters for the Elements of the Page
+    public WebElement getNotifyIconTree() {return notifyIconTree;}
 
+    public WebElement getTarget() {return target;}
 
+    public WebElement getNameInput() {return nameInput;}
 
 
 
@@ -56,17 +63,6 @@ public class NotifyMePageInMAP2 extends Page {
         waitForJSandJQueryToLoad();
     }
 
-    public void addWidget() {
-
-        Actions builder = new Actions(driver);
-        builder.dragAndDrop(notifyIconTree, target).perform();
-        try {
-            assertEquals("Dropped!", target.getText());
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }
-        waitForJSandJQueryToLoad();
-    }
 
     public void setFilter(){
         filter.clear();
@@ -81,20 +77,10 @@ public class NotifyMePageInMAP2 extends Page {
 
     }
 
-    public void setPageName(){
-        nameInput.clear();
-        nameInput.sendKeys("notifyauto");
-    }
 
-   /* public void addWidget(){
-        libraryTab.click();
-        ((JavascriptExecutor)driver).executeScript("map.pg.addWidget(\"notify_me\", {destination: \"body_0_0\"});");
-    } */
 
-    public void activatePage(){
+       public void activatePage(){
         activateBtn.click();
-
-
     }
 
     public MAP2Page backToMap(){
@@ -106,5 +92,10 @@ public class NotifyMePageInMAP2 extends Page {
         libraryTab.click();
         return notifyIconTree.isDisplayed();
     }
+
+    /* public void addWidget(){
+        libraryTab.click();
+        ((JavascriptExecutor)driver).executeScript("map.pg.addWidget(\"notify_me\", {destination: \"body_0_0\"});");
+    } */
 
 }
