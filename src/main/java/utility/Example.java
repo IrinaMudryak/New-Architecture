@@ -19,17 +19,15 @@ public class Example extends BaseHelper{
     }
   @Test(priority = 21)
 
-    public void addDealerScoreWidget() throws Exception {
+    public void addNotifyMeWidget() throws Exception {
         app.getNavigationHelper().goToMAP2();
         pages.map2.clickNotifyTab();
-       //add new page in MAP2
+       //add new page in MAP2Page
         pages.map2.clickAddPage();
         pages.notifyMePageInMAP2.setPageName();
         pages.notifyMePageInMAP2.clickIcoWidget();
         pages.notifyMePageInMAP2.setFilter();
         pages.notifyMePageInMAP2.addWidget();
-
-
         pages.notifyMePageInMAP2.openWidgetEditor();
 
         // need to write select form mode

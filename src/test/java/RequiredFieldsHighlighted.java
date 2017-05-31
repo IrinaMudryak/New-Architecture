@@ -25,7 +25,7 @@ public class RequiredFieldsHighlighted extends TestBaseDws{
          labelColor = app.formHelper.getLabelColor();
          asteriskColor = app.formHelper.getAsteriskColor();
          borderColor = app.formHelper.getBorderColor();
-         app.formHelper.clearRequiredFields();
+         app.notifyMeFormFunc.clearRequiredFields();
          pages.notifyMe.clickOnSubmit();
     }
 

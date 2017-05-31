@@ -9,7 +9,7 @@ import java.io.IOException;
 public class DefaultPostFormTestTruckMode extends TestBaseDws {
     @Test(groups = "dws")//select Limousine
     public void selectBodyStyle() {
-        app.formHelper.fillFormTruckMode();
+        app.notifyMeFormFunc.fillFormTruckMode();
         pages.notifyMe.clickOnSubmit();
         assertEquals(pages.notifyMe.postFormGetText(), "Your request has been received.\n" +
                 "A customer service representative will contact you shortly to complete the transaction.\n" +

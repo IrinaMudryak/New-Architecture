@@ -1,7 +1,9 @@
 package utility;
 
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
@@ -50,6 +52,44 @@ public class BaseHelper {
         };
 
         return wait.until(jQueryLoad) && wait.until(jsLoad);
+    }
+
+    public boolean waitUntilElementUsable(final WebElement element) {
+        return  wait.until(new ExpectedCondition<Boolean>() {
+            public Boolean apply(WebDriver d) {
+                try {
+                    return element.isDisplayed();
+                } catch (NoSuchElementException ex) {
+                    return false;
+                }
+            }
+        });
+    }
+
+    public boolean waitUntilElementEnabled(final WebElement element) {
+        return  wait.until(new ExpectedCondition<Boolean>() {
+            public Boolean apply(WebDriver d) {
+                try {
+                    return element.isEnabled();
+                } catch (NoSuchElementException ex) {
+                    return false;
+                }
+            }
+        });
+    }
+
+    public void checkCheckboxUniversal (WebElement element) {
+        if (element.getAttribute("checked") == null) {
+            waitUntilElementUsable(element);
+            element.click();
+            waitForJSandJQueryToLoad();
+        }
+    }
+
+    public void fillInputField (WebElement element, CharSequence content){
+        element.clear();
+        element.sendKeys(content);
+
     }
 
 
