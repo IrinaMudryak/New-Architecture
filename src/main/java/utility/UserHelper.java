@@ -15,7 +15,7 @@ public class UserHelper extends BaseHelper {
                    pages.userEditor.addNewManager();
                    pages.users.openLastUserEditor();
                    pages.userEditor.clickAccessTab();
-                   pages.userEditor.turnOnMap2Checkbox();
+                   app.userEditorFunc.turnOnMap2Checkbox();
                    pages.userEditor.turnOnLeadsCRM();
                    pages.userEditor.turnOnLeadsEmail();
                    pages.userEditor.turnOnWebmail();
@@ -26,7 +26,7 @@ public class UserHelper extends BaseHelper {
         public void turnOnMap2OnRootUser() throws InterruptedException {
             app.getNavigationHelper().openUsersPage();
             pages.users.openRootUserEditor();
-            pages.userEditor.turnOnMap2();
+            app.userEditorFunc.turnOnMap2();
 
         }
 

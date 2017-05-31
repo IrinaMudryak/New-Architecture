@@ -1,14 +1,14 @@
 package utility;
 
-import customers.Leads;
-import dms.DmsHome;
+import customers.LeadsPage;
+import dms.DmsHomePage;
 import dms.LoginPage;
-import dms.SiteEditor;
-import dmsDealers.Dealers;
-import dmsDealers.SitePackage;
-import map2.MAP2;
+import dms.SiteEditorPage;
+import dmsDealers.DealersPage;
+import dmsDealers.SitePackagePage;
+import map2.MAP2Page;
 import map2.NotifyMePageInMAP2;
-import map2.WidgetSettings;
+import map2.WidgetSettingsPage;
 import notifiMeForm.NotifyMeFormPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -26,24 +26,24 @@ public class PageManager {
     private WebDriver driver;
     public NotifyMeFormPage notifyMe;
     public LoginPage loginPage;
-    public DmsHome dmsHome;
-    public MAP2 map2;
+    public DmsHomePage dmsHome;
+    public MAP2Page map2;
     public NotifyMePageInMAP2 notifyMePageInMAP2;
-    public SiteEditor siteEditor;
-    public Dealers dealers;
-    public SitePackage sitePackage;
-    public LeadsEmail leadsEmail;
-    public Localization localization;
-    public Sites sites;
-    public UserEditor userEditor;
-    public Users users;
-    public Website website;
-    public Leads leads;
+    public SiteEditorPage siteEditor;
+    public DealersPage dealers;
+    public SitePackagePage sitePackage;
+    public LeadsEmailPage leadsEmail;
+    public LocalizationPage localization;
+    public SitesPage sites;
+    public UserEditorPage userEditor;
+    public UsersPage users;
+    public WebsitePage website;
+    public LeadsPage leads;
     public EmailsList emailsList;
     public EmailDetails emailDetails;
     public WebMailLogin webMailLogin;
-    public DealershipGeneralInformation dealershipGeneralInformation;
-    public WidgetSettings widgetSettings;
+    public DealershipGeneralInformationPage dealershipGeneralInformation;
+    public WidgetSettingsPage widgetSettings;
 
 
 
@@ -51,24 +51,24 @@ public class PageManager {
         this.driver=driver;
         notifyMe = initElements(new NotifyMeFormPage(this));
         loginPage = initElements(new LoginPage(this));
-        dmsHome = initElements(new DmsHome(this));
-        map2 = initElements(new MAP2(this));
+        dmsHome = initElements(new DmsHomePage(this));
+        map2 = initElements(new MAP2Page(this));
         notifyMePageInMAP2 = initElements(new NotifyMePageInMAP2(this));
-        siteEditor = initElements(new SiteEditor(this));
-        dealers = initElements(new Dealers(this));
-        sitePackage = initElements(new SitePackage(this));
-        leadsEmail = initElements(new LeadsEmail(this));
-        localization = initElements(new Localization(this));
-        sites = initElements(new Sites(this));
-        userEditor = initElements(new UserEditor(this));
-        users = initElements(new Users(this));
-        website = initElements(new Website(this));
-        leads = initElements(new Leads(this));
+        siteEditor = initElements(new SiteEditorPage(this));
+        dealers = initElements(new DealersPage(this));
+        sitePackage = initElements(new SitePackagePage(this));
+        leadsEmail = initElements(new LeadsEmailPage(this));
+        localization = initElements(new LocalizationPage(this));
+        sites = initElements(new SitesPage(this));
+        userEditor = initElements(new UserEditorPage(this));
+        users = initElements(new UsersPage(this));
+        website = initElements(new WebsitePage(this));
+        leads = initElements(new LeadsPage(this));
         emailDetails = initElements(new EmailDetails(this));
         emailsList = initElements(new EmailsList(this));
         webMailLogin = initElements(new WebMailLogin(this));
-        dealershipGeneralInformation = initElements(new DealershipGeneralInformation(this));
-        widgetSettings = initElements(new WidgetSettings(this));
+        dealershipGeneralInformation = initElements(new DealershipGeneralInformationPage(this));
+        widgetSettings = initElements(new WidgetSettingsPage(this));
 
 
     }

@@ -1,4 +1,3 @@
-import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.testng.annotations.*;
 import utility.*;
@@ -25,14 +24,14 @@ public class TestBaseDws {
         pages = new PageManager(app.getWebDriver());
 
 
-        app.dmsHelper.loginToDms();
+        app.loginFunc.loginToDms();
         app.userHelper.turnOnMap2OnRootUser();
-        app.userHelper.createManagerAndSetAccesses();
+        //app.userHelper.createManagerAndSetAccesses();
         app.navHelper.openSettingsWebsiteGeneral();
         pages.website.disableCaptcha();
-        pages.website.setjQueryVersion();
+        pages.website.setjQueryVersionMAP2();
         app.navHelper.openDealershipGeneralInformation();
-        dealershipName = pages.dealershipGeneralInformation.getDealershipName();
+        dealershipName = pages.dealershipGeneralInformation.getDealershipName();//save Dealership Name
         //app.map2Helper.createNotifyMePage();
 
       }

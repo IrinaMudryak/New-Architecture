@@ -17,12 +17,28 @@ public class LoginPage extends Page {
     }
 
     @FindBy(how= How.ID, using ="login")
-    public WebElement loginInput;
+    private WebElement loginInput;
 
     @FindBy(how= How.ID, using ="password")
-    public WebElement pwInput;
+    private WebElement pwInput;
 
     @FindBy(how= How.ID, using ="login2")
-    public WebElement submirButton;
+    private WebElement submitButton;
+
+    public WebElement getLoginInput() {
+        return loginInput;
+    }
+
+    public WebElement getPwInput() {
+        return pwInput;
+    }
+
+    public WebElement getSubmitButton() {
+        return submitButton;
+    }
+
+
+
+
 
     }

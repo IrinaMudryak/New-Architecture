@@ -1,10 +1,10 @@
 package utility;
 
 import dms.LoginPage;
-import map2.MAP2;
+import map2.MAP2Page;
 import notifiMeForm.NotifyMeFormPage;
-import settings.Users;
-import settings.Website;
+import settings.UsersPage;
+import settings.WebsitePage;
 
 
 /**
@@ -29,20 +29,20 @@ public class NavigationHelper extends BaseHelper {
         return pages.loginPage;
     }
 
-    //go to DMS-Settings-Website-General
-    public Website openSettingsWebsiteGeneral() {
+    //go to DMS-Settings-WebsitePage-General
+    public WebsitePage openSettingsWebsiteGeneral() {
     app.getWebDriver().get(app.baseUrl + "/dms/settings/website#general");
     return pages.website;
     }
 
 
-    /*go to dms Users page*/
-    public Users openUsersPage() {
+    /*go to dms UsersPage page*/
+    public UsersPage openUsersPage() {
          app.getWebDriver().get(app.baseUrl + "/dms/settings/users");
          return pages.users;
     }
 
-    public MAP2 goToMAP2() {
+    public MAP2Page goToMAP2() {
        app.getWebDriver().get(app.baseUrl + "/dms/tools/make_a_page_2");
         return pages.map2;
     }

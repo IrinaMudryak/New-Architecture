@@ -13,7 +13,7 @@ public class DefaultPostFormTestVehicleMode extends TestBaseDws {
 
     @Test(groups = "dws")
     public void fillFormandChecknotification() {
-        app.formHelper.fillFormVehicleMode();
+        app.notifyMeFormFunc.fillFormVehicleMode();
         pages.notifyMe.clickOnSubmit();
         assertEquals(pages.notifyMe.postFormGetText(), "Your request has been received.\n" +
                 "A customer service representative will contact you shortly to complete the transaction.\n" +
